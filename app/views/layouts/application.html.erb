@@ -14,7 +14,109 @@
 
   <body>
     <header>
-      
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <h1 class="navbar-brand">Nagano Cake</h1>
+          <button class="navbar-toggler" type="button" data-toggler="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <% if admin_signed_in? %>
+                <% if request.fullpath.include? "/admin" %>
+                  <li>
+                    <%= link_to user_path(current_user.id),class: "nav-link text-light" do %>
+                      <span class="btn btn-sm">商品一覧</span>
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to users_path,class: "nav-link text-light" do %>
+                      <span class="btn btn-sm">会員一覧</span>
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to books_path,class: "nav-link text-light" do %>
+                      <span class="btn btn-sm">注文履歴一覧</span>
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to destroy_user_session_path,method: :get,class: "nav-link text-light" do %>
+                      <span class="btn btn-sm">ジャンル一覧</span>
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to destroy_user_session_path,method: :get,class: "nav-link text-light" do %>
+                      <span class="btn btn-sm">ログアウト</span>
+                  </li>
+                <% else %>
+                  <li>
+                    <%= link_to root_path,class:"nav-link text-light" do %>
+                      <span class="btn btn-sm">About</span>
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to home_about_path,class: "nav-link text-light" do %>
+                      <span class="btn btn-sm">商品一覧</span>
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to new_user_registration_path,class: "nav-link text-light" do %>
+                      <span class="btn btn-sm">新規登録</span>
+                    <% end %>
+                  </li>
+                  <li>
+                    <%= link_to new_user_session_path,class: "nav-link text-light" do %>
+                      <span class="btn btn-sm">ログイン</span>
+                    <% end %>
+                  </li>
+                <% end %>
+              <% elsif public_signed_in? %>
+                <li>
+                    <%= link_to root_path,class:"nav-link text-light" do %>
+                      <span class="btn btn-sm">マイページ</span>
+                    <% end %>
+                </li>
+                <li>
+                  <%= link_to home_about_path,class: "nav-link text-light" do %>
+                    <span class="btn btn-sm">商品一覧</span>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to new_user_registration_path,class: "nav-link text-light" do %>
+                    <span class="btn btn-sm">カート</span>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to new_user_session_path,class: "nav-link text-light" do %>
+                    <span class="btn btn-sm">ログアウト</span>
+                  <% end %>
+                </li>
+              <% else %>
+                <li>
+                    <%= link_to root_path,class:"nav-link text-light" do %>
+                      <span class="btn btn-sm">About</span>
+                    <% end %>
+                </li>
+                <li>
+                  <%= link_to home_about_path,class: "nav-link text-light" do %>
+                    <span class="btn btn-sm">商品一覧</span>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to new_user_registration_path,class: "nav-link text-light" do %>
+                    <span class="btn btn-sm">新規登録</span>
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to new_user_session_path,class: "nav-link text-light" do %>
+                    <span class="btn btn-sm">ログイン</span>
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>    
+        </div>
+      </nav>
     </header>
     <main>
       <%= yield %>

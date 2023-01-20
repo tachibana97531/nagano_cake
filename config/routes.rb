@@ -1,77 +1,56 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'order_details/update'
-  end
-  namespace :admin do
-    get 'orders/show'
-    get 'orders/update'
-  end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-  end
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/create'
-    get 'genres/edit'
-    get 'genres/update'
-  end
-  namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/create'
-    get 'items/show'
-    get 'items/edit'
-    get 'items/update'
-  end
-  namespace :admin do
-    get 'homes/top'
-  end
-  namespace :public do
-    get 'addresses/index'
-    get 'addresses/edit'
-    get 'addresses/create'
-    get 'addresses/update'
-    get 'addresses/destroy'
-  end
-  namespace :public do
-    get 'orders/new'
-    get 'orders/confirm'
-    get 'orders/complete'
-    get 'orders/create'
-    get 'orders/index'
-    get 'orders/show'
-  end
-  namespace :public do
-    get 'cart_items/index'
-    get 'cart_items/update'
-    get 'cart_items/destroy'
-    get 'cart_items/destroy_all'
-    get 'cart_items/create'
-  end
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-    get 'customers/unsubscribe'
-    get 'customers/withdraw'
-  end
-  namespace :public do
-    get 'items/index'
-    get 'items/show'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
   devise_for :customers,skip:[:passwords],controllers:{
-    registrations:"public/registrations",
-    sessions:"public/sessions"
+  registrations:"public/registrations",
+  sessions:"public/sessions"
   }
   devise_for :admin,skip:[:registrations,:passwords],controllers:{
     sessions: "admin/sessions"
   }
+  namespace :admin do
+    patch 'order_details/:id'=>"order_details#update"
+  end
+  namespace :admin do
+    get 'orders/:id'=>"orders#show"
+    patch 'orders/:id'=>"orders#update"
+  end
+  namespace :admin do
+    resources:customers,except:[:new,:create,:destroy]
+  end
+  namespace :admin do
+    resources:genres,except:[:new,:show,:destroy]
+  end
+  namespace :admin do
+    resources:items,except:[:destroy]
+  end
+  namespace :admin do
+    get '/'=>"homes#top"
+  end
+  scope module:"public" do
+    resources:addresses,except:[:new,:show]
+  end
+  scope module:"public" do
+    resources:orders,only:[:new,:create,:index,:show]
+    post 'orders/confirm'=>"orders#confirm"
+    get 'orders/complete'=>"orders#complete"
+  end
+  scope module:"public" do
+    resources:cart_items,only:[:create,:index,:update,:destroy]
+    delete 'cart_items/destroy_all'=>"cart_items#destroy_all"
+  end
+  scope module:"public" do
+    get 'customers/my_page'=>"customers#show"
+    get 'customers/information/edit'=>"customers#edit"
+    patch 'customers/information'=>"customers#update"
+    get 'customers/unsubscribe'=>"customers#unsubscribe"
+    patch 'customers/withdraw'=>"customers#withdraw"
+  end
+  scope module:"public" do
+    resources:items,only:[:index,:show]
+  end
+  scope module:"public" do
+    get '/'=>"homes#top"
+    get '/about'=>"homes#about"
+  end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

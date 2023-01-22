@@ -5,13 +5,33 @@
         </div>
         <div class="col-md-6">
             <%= f.file_field:image,accept: "image/*" %>
-        </div></br>
+        </div>
         <div class="col-md-2">
             <h4>商品名</h4>
         </div>
         <div class="col-md-6">
             <%= f.text_field:name %>
-        </div></br>
-        <div></div>
+        </div>
+        <div class="col-md-2">
+            <h4>商品説明</h4>
+        </div>
+        <div class="col-md-6">
+            <%= f.text_area:introduction %>
+        </div>
+        <div class="col-md-2">
+            <h4>ジャンル</h4>
+        </div>
+        <div class="col-md-6">
+            
+        </div>
+        <div class="col-md-2">
+            <h4>販売ステータス</h4>
+        </div>
+        <div class="col-md-6">
+            
+        </div>
+        <div class="col-auto">
+            <%= f.submit "変更を保存" %>
+        </div>
     <% end %>
 </div>

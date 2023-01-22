@@ -1,2 +1,17 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<div class="container-fluid h-100">
+    <%= form_with model:@item,url:admin_items_path,method: :post,class:"row" %>
+        <div class="col-md-2">
+            <h4>商品画像</h4>
+        </div>
+        <div class="col-md-6">
+            <%= f.file_field:image,accept: "image/*" %>
+        </div></br>
+        <div class="col-md-2">
+            <h4>商品名</h4>
+        </div>
+        <div class="col-md-6">
+            <%= f.text_field:name %>
+        </div></br>
+        <div></div>
+    <% end %>
+</div>

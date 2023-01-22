@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     resources:items,except:[:destroy]
   end
   namespace :admin do
-    get '/'=>"homes#top"
+    get '/'=>"homes#top",as: :homes
   end
   scope module:"public" do
     resources:addresses,except:[:new,:show]

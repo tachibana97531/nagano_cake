@@ -2,7 +2,13 @@
 
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-
+    def after_new_customer_session_path_for(resource)
+        customers_my_page_path
+    end
+       
+    def after_destroy_customer_session_path_for(resource)
+        get "/"=>"public/homes#top"
+    end
   # GET /resource/sign_in
   # def new
   #   super

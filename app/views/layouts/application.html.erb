@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" class="h-100">
   <head>
     <title>NaganoCake</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -12,11 +12,11 @@
     <script src="https://kit.fontawesome.com/3fdee408bb.js" crossorigin="anonymous"></script>
   </head>
 
-  <body>
+  <body class="h-100">
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <h1 class="navbar-brand">Nagano Cake</h1>
-        <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <h1 class="navbar-brand">Nagano Cake</h1>
           <button class="navbar-toggler" type="button" data-toggler="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" >
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -25,91 +25,91 @@
               <% if admin_signed_in? %>
                 <% if request.fullpath.include? "/admin" %>
                   <li>
-                    <%= link_to admin_items_path,method: :get,class: "nav-link text-dark border-10 border-dark rounded" do %>
+                    <%= link_to admin_items_path,method: :get,class: "nav-link text-dark border border-10 border-dark rounded m-2" do %>
                       <span class="btn btn-sm">商品一覧</span>
                     <% end %>
                   </li>
                   <li>
-                    <%= link_to admin_customers_path,method: :get,class: "nav-link text-dark border-10 border-dark rounded" do %>
+                    <%= link_to admin_customers_path,method: :get,class: "nav-link text-dark border border-10 border-dark rounded m-2" do %>
                       <span class="btn btn-sm">会員一覧</span>
                     <% end %>
                   </li>
                   <li>
-                    <%= link_to orders_path,method: :get,class: "nav-link text-dark border-10 border-dark rounded" do %>
+                    <%= link_to orders_path,method: :get,class: "nav-link text-dark border border-10 border-dark rounded m-2" do %>
                       <span class="btn btn-sm">注文履歴一覧</span>
                     <% end %>
                   </li>
                   <li>
-                    <%= link_to admin_genres_path,method: :get,class: "nav-link text-dark border-10 border-dark rounded" do %>
+                    <%= link_to admin_genres_path,method: :get,class: "nav-link text-dark border border-10 border-dark rounded m-2" do %>
                       <span class="btn btn-sm">ジャンル一覧</span>
                     <% end %>
                   </li>
                   <li>
-                    <%= link_to destroy_admin_session_path,method: :delete,class: "nav-link text-dark border-10 border-dark rounded" do %>
+                    <%= link_to destroy_admin_session_path,method: :delete,class: "nav-link text-dark border border-10 border-dark rounded m-2" do %>
                       <span class="btn btn-sm">ログアウト</span>
                     <% end %>
                   </li>
                 <% else %>
                   <li>
-                    <%= link_to about_path,method: :get,class:"nav-link text-dark border-10 border-dark rounded" do %>
+                    <%= link_to about_path,method: :get,class:"nav-link text-dark border border-10 border-dark rounded m-2" do %>
                       <span class="btn btn-sm">About</span>
                     <% end %>
                   </li>
                   <li>
-                    <%= link_to items_path,method: :get,class: "nav-link text-dark border-10 border-dark rounded" do %>
+                    <%= link_to items_path,method: :get,class: "nav-link text-dark border border-10 border-dark rounded m-2" do %>
                       <span class="btn btn-sm">商品一覧</span>
                     <% end %>
                   </li>
                   <li>
-                    <%= link_to new_customer_registration_path,method: :get,class: "nav-link text-dark border-10 border-dark rounded" do %>
+                    <%= link_to new_customer_registration_path,method: :get,class: "nav-link text-dark border border-10 border-dark rounded m-2" do %>
                       <span class="btn btn-sm">新規登録</span>
                     <% end %>
                   </li>
                   <li>
-                    <%= link_to new_customer_session_path,method: :get,class: "nav-link text-dark border-10 border-dark rounded" do %>
+                    <%= link_to new_customer_session_path,method: :get,class: "nav-link text-dark border border-10 border-dark rounded m-2" do %>
                       <span class="btn btn-sm">ログイン</span>
                     <% end %>
                   </li>
                 <% end %>
               <% elsif customer_signed_in? %>
                 <li>
-                    <%= link_to customers_my_page_path,method: :get,class:"nav-link text-dark border-10 border-dark rounded" do %>
+                    <%= link_to customers_my_page_path,method: :get,class:"nav-link text-dark border border-10 border-dark rounded m-2" do %>
                       <span class="btn btn-sm">マイページ</span>
                     <% end %>
                 </li>
                 <li>
-                  <%= link_to items_path,method: :get,class: "nav-link text-dark border-10 border-dark rounded" do %>
+                  <%= link_to items_path,method: :get,class: "nav-link text-dark border border-10 border-dark rounded m-2" do %>
                     <span class="btn btn-sm">商品一覧</span>
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to cart_items_path,method: :get,class: "nav-link text-dark border-10 border-dark rounded" do %>
+                  <%= link_to cart_items_path,method: :get,class: "nav-link text-dark border border-10 border-dark rounded m-2" do %>
                     <span class="btn btn-sm">カート</span>
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to destroy_customer_registration_path,method: :delete,class: "nav-link text-dark border-10 border-dark rounded" do %>
+                  <%= link_to destroy_customer_registration_path,method: :delete,class: "nav-link text-dark border border-10 border-dark rounded m-2" do %>
                     <span class="btn btn-sm">ログアウト</span>
                   <% end %>
                 </li>
               <% else %>
                 <li>
-                    <%= link_to about_path,method: :get,class:"nav-link text-dark border border-10 border-dark rounded" do %>
+                    <%= link_to about_path,method: :get,class:"nav-link text-dark border border-10 border-dark rounded m-2" do %>
                       <span class="btn btn-sm">About</span>
                     <% end %>
                 </li>
                 <li>
-                  <%= link_to items_path,method: :get,class: "nav-link text-dark border-10 border-dark rounded" do %>
+                  <%= link_to items_path,method: :get,class: "nav-link text-dark border border-10 border-dark rounded m-2" do %>
                     <span class="btn btn-sm">商品一覧</span>
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to new_customer_registration_path,method: :get,class: "nav-link text-dark border-10 border-dark rounded" do %>
+                  <%= link_to new_customer_registration_path,method: :get,class: "nav-link text-dark border border-10 border-dark rounded m-2" do %>
                     <span class="btn btn-sm">新規登録</span>
                   <% end %>
                 </li>
                 <li>
-                  <%= link_to new_customer_session_path,method: :get,class: "nav-link text-dark border-10 border-dark rounded" do %>
+                  <%= link_to new_customer_session_path,method: :get,class: "nav-link text-dark border border-10 border-dark rounded m-2" do %>
                     <span class="btn btn-sm">ログイン</span>
                   <% end %>
                 </li>
@@ -119,11 +119,16 @@
         </div>
       </nav>
     </header>
-    <main>
+    <main class="h-100">
       <%= yield %>
     </main>
-    <footer>
-      
+    <footer class="h-10">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+          </div>
+        </div>
+      </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>

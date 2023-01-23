@@ -1,2 +1,20 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+<div class="d-inline-block">
+    <%= image_tag item.image %>
+</div>
+<%= form_with model:@item_find,url:edit_admin_item_path(@item_find.id),method: :get,local:true,class:"container" do |f| %>
+    <%= image_tag f.image %>
+    <div class="row">
+        <div class="col-md-6">
+            <p>商品名</p>
+        </div>
+        <div class="col-md-6">
+            <%= f.name %>
+        </div>
+        <div class="col-md-6">
+            <p>商品説明</p>
+        </div>
+        <div class="col-md-6">
+            <%= f.introduction %>
+        </div>
+    </div>
+<% end %>

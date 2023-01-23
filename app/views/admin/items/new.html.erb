@@ -1,47 +1,49 @@
-<%= form_with model:@item,url:admin_items_path,method: :post,class:"container-fluid h-100" do |f| %>
+<%= form_with model:@item,url:admin_items_path,method: :post,class:"container mt-5" do |f| %>
     <div class="row">
-        <div class="col-md-2">
-            <h4>商品画像</h4>
+        <div class="offset-md-3 col-md-2">
+            <p>商品画像</p>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-7">
             <%= f.file_field:image,accept: "image/*" %>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            <h4>商品名</h4>
+
+        <div class="offset-md-3 col-md-2">
+            <p>商品名</p>
         </div>
-        <div class="col-md-6">
-            <%= f.text_field:name %>
+        <div class="col-md-7">
+            <%= f.text_field:name,placeholder:"商品名" %>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            <h4>商品説明</h4>
+    
+        <div class="offset-md-3 col-md-2">
+            <p>商品説明</p>
         </div>
-        <div class="col-md-6">
-            <%= f.text_area:introduction %>
+        <div class="col-md-7">
+            <%= f.text_area:introduction,placeholder:"ここに説明文を記述します" %>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            <h4>ジャンル</h4>
+    
+        <div class="offset-md-3 col-md-2">
+            <p>ジャンル</p>
         </div>
-        <%= form_with model:@genre,local:true, class:"col-md-6" do |f| %>
-            <%= f.select:genre,{"ケーキ":1,"プリン":2,"焼き菓子":3,"キャンディ":4},{include_blank:"選択してください"},{class:"form-control",required:true} %>
+        <%= form_with model:@genre,local:true do |f| %>
+            <%= f.select:genre,{"ケーキ":1,"プリン":2,"焼き菓子":3,"キャンディ":4},{include_blank:"選択してください"},{class:"form-control col-md-3",required:true} %>
         <% end %>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
-            <h4>販売ステータス</h4>
+    
+        <div class="offset-md-3 col-md-2">
+            <p>税抜価格</p>
         </div>
-        <div class="col-md-6">
-            
+        <div class="col-md-7">
+            <%= f.text_field:price,placeholder:"1000" %>円
         </div>
-    </div>
-    <div class="row">
-        <div class="col-auto">
-            <%= f.submit "変更を保存" %>
+
+        <div class="offset-md-3 col-md-2">
+            <p>販売ステータス</p>
         </div>
+        <%= form_with model: @item, local: true,class:"col-md-7" do |f| %>
+          <%= f.radio_button :is_active, :true %>
+          <%= f.label :is_active, "販売中" %>
+          <%= f.radio_button :is_active, :false %>
+          <%= f.label :is_active, "販売停止中" %>
+        <% end %>
+        <%= f.submit "新規登録",class:"offset-md-4 col-md-2 btn btn-success" %>
     </div>
 <% end %>

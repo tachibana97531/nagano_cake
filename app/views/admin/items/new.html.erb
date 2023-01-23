@@ -1,37 +1,47 @@
-<div class="container-fluid h-100">
-    <%= form_with model:@item,url:admin_items_path,method: :post,class:"row" %>
+<%= form_with model:@item,url:admin_items_path,method: :post,class:"container-fluid h-100" do |f| %>
+    <div class="row">
         <div class="col-md-2">
             <h4>商品画像</h4>
         </div>
         <div class="col-md-6">
             <%= f.file_field:image,accept: "image/*" %>
         </div>
+    </div>
+    <div class="row">
         <div class="col-md-2">
             <h4>商品名</h4>
         </div>
         <div class="col-md-6">
             <%= f.text_field:name %>
         </div>
+    </div>
+    <div class="row">
         <div class="col-md-2">
             <h4>商品説明</h4>
         </div>
         <div class="col-md-6">
             <%= f.text_area:introduction %>
         </div>
+    </div>
+    <div class="row">
         <div class="col-md-2">
             <h4>ジャンル</h4>
         </div>
-        <div class="col-md-6">
-            
-        </div>
+        <%= form_with model:@genre,local:true, class:"col-md-6" do |f| %>
+            <%= f.select:genre,{"ケーキ":1,"プリン":2,"焼き菓子":3,"キャンディ":4},{include_blank:"選択してください"},{class:"form-control",required:true} %>
+        <% end %>
+    </div>
+    <div class="row">
         <div class="col-md-2">
             <h4>販売ステータス</h4>
         </div>
         <div class="col-md-6">
             
         </div>
+    </div>
+    <div class="row">
         <div class="col-auto">
             <%= f.submit "変更を保存" %>
         </div>
-    <% end %>
-</div>
+    </div>
+<% end %>

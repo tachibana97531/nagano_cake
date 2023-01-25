@@ -6,7 +6,6 @@
         <div class="col-md-7">
             <%= f.file_field:image,accept: "image/*" %>
         </div>
-
         <div class="offset-md-3 col-md-2">
             <p>商品名</p>
         </div>
@@ -24,9 +23,9 @@
         <div class="offset-md-3 col-md-2">
             <p>ジャンル</p>
         </div>
-        <%= form_with model:@genre,local:true do |f| %>
-            <%= f.select:genre,{"ケーキ":1,"プリン":2,"焼き菓子":3,"キャンディ":4},{include_blank:"選択してください"},{class:"form-control col-md-3",required:true} %>
-        <% end %>
+        <div class="col-md-7">
+            <%= f.select:genre_id,{"ケーキ":1,"プリン":2,"焼き菓子":3,"キャンディ":4},{include_blank:"選択してください"},{class:"form-control col-md-3",required:true} %>
+        </div>
     
         <div class="offset-md-3 col-md-2">
             <p>税抜価格</p>
@@ -38,12 +37,12 @@
         <div class="offset-md-3 col-md-2">
             <p>販売ステータス</p>
         </div>
-        <%= form_with model: @item, local: true,class:"col-md-7" do |f| %>
+        <div class="col-md-7">
           <%= f.radio_button :is_active, :true %>
           <%= f.label :is_active, "販売中" %>
           <%= f.radio_button :is_active, :false %>
           <%= f.label :is_active, "販売停止中" %>
-        <% end %>
-        <%= f.submit "新規登録",class:"offset-md-4 col-md-2 btn btn-success" %>
+        </div>
+        <%= f.submit "新規登録",class:"offset-md-4 col-md-2 btn btn-sm btn-success" %>
     </div>
 <% end %>

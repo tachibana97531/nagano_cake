@@ -1,20 +1,50 @@
-<div class="d-inline-block">
-    <%= image_tag item.image %>
-</div>
-<%= form_with model:@item_find,url:edit_admin_item_path(@item_find.id),method: :get,local:true,class:"container" do |f| %>
-    <%= image_tag f.image %>
+
+    <%= image_tag @item_find.get_image(100,100) %>
     <div class="row">
         <div class="col-md-6">
             <p>商品名</p>
         </div>
         <div class="col-md-6">
-            <%= f.name %>
+            <%= @item_find.name %>
         </div>
         <div class="col-md-6">
             <p>商品説明</p>
         </div>
         <div class="col-md-6">
-            <%= f.introduction %>
+            <%= @item_find.introduction %>
         </div>
+        <div class="col-md-6">
+            <p>ジャンル</p>
+        </div>
+        <div class="col-md-6">
+            <% if @item_find.genre_id == 1 %>
+                <%= "ケーキ" %>
+            <% elsif @item_find.genre_id == 2 %>
+                <%= "プリン" %>
+            <% elsif @item_find.genre_id == 3 %>
+                <%= "焼き菓子" %>
+            <% elsif @item_find.genre_id == 4 %>
+                <%= "キャンディ" %>
+            <% end %>
+        </div>
+        <div class="col-md-6">
+            <p>税込価格</p></br>
+            <p>（税抜価格）</p>
+        </div>
+        <div class="col-md-6">
+            <%= @item_find.price.to_s(:delimited) %>
+            (<%= @item_find.add_price_tax.to_s(:delimited) %>)円
+        </div>
+        <div class="col-md-6">
+            <p>販売ステータス</p>
+        </div>
+        <div class="col-md-6">
+            <% if @item_find.is_active == true %>
+                <%= "販売中" %>
+            <% else %>
+               <%= "販売停止中" %>
+            <% end %>
+        </div>
+        <%= link_to "編集する",edit_admin_item_path(@item_find.id),class:"btn btn-sm btn-success o@item_find@item_findset-col-4 col-md-2" %>
     </div>
-<% end %>
+

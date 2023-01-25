@@ -1,2 +1,17 @@
-<h1>Admin::Customers#edit</h1>
-<p>Find me in app/views/admin/customers/edit.html.erb</p>
+<h1>会員情報編集</h1>
+<%= form_with model:@c_find,url:admin_customer_path(@c_find.id),method: :patch do |f| %>
+  <p>会員ID<%= @c_find.id %></p>
+  <p>氏名<%= f.text_field:last_name,placeholder:"令和" %><%= f.text_field:first_name,placeholder:"道子" %></p>
+  <p>シメイ<%= f.text_field:last_name_kana,placeholder:"レイワ" %><%= f.text_field:first_name_kana,placeholder:"ミチコ" %></p>
+  <p>郵便番号<%= f.text_field:postal_code,placeholder:"0000000" %></p>
+  <p>住所<%= f.text_field:address,placeholder:"東京都渋谷区代々木神園町0-0" %></p>
+  <p>電話番号<%= f.text_field:telephone_number,placeholder:"00000000000" %></p>
+  <p>メールアドレス<%= f.text_field:email,placeholer:"sample@example.com" %> %></p>
+  <p>会員ステータス
+    <%= f.radio_button:is_deleted, :false %>
+    <%= f.label:is_deleted, :"有効" %>
+    <%= f.radio_button:is_deleted, :true %>
+    <%= f.label:is_deleted, :"退会" %>
+  </p>
+  <p><%= f.submit "変更を保存",class:"btn btn-sm btn-success" %></p>
+<% end %>

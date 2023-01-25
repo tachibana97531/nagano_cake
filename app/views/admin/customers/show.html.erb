@@ -1,2 +1,17 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<h4>会員詳細</h4>
+<p>会員ID<%= @c_find.id %></p>
+<p>氏名<%= @c_find.last_name %><%= @c_find.first_name %></p>
+<p>シメイ<%= @c_find.last_name_kana %><%= @c_find.first_name_kana %></p>
+<p>郵便番号<%= @c_find.postal_code %></p>
+<p>住所<%= @c_find.address %></p>
+<p>電話番号<%= @c_find.telephone_number %></p>
+<p>メールアドレス<%= @c_find.email %></p>
+<p>会員ステータス
+   <% if @c_find.is_deleted == false %>
+      <%= "有効" %>
+   <% else %>
+      <%= "退会" %>
+   <% end %>
+</p>
+<%= link_to "編集する",edit_admin_customer_path(@c_find.id),class:"btn btn-sm btn-success" %>
+<%= link_to "注文履歴一覧を見る",admin_homes_path,class:"btn btn-sm btn-primary" %>

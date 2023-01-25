@@ -22,8 +22,8 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-              <% if admin_signed_in? %>
-                <% if request.fullpath.include? "/admin" %>
+              <% if request.fullpath.include? "/admin" %>
+                <% if admin_signed_in? %>
                   <li>
                     <%= link_to admin_items_path,method: :get,class: "nav-link text-dark border border-10 border-dark rounded m-2" do %>
                       <span class="btn btn-sm">商品一覧</span>

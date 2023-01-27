@@ -1,2 +1,17 @@
-<h1>Public::Customers#show</h1>
-<p>Find me in app/views/public/customers/show.html.erb</p>
+<h4>マイページ</h4>
+<h4>登録情報<%= link_to "編集する",customers_information_edit_path,class:"btn btn-sm btn-success" %></h4>
+<p>会員ID<%= current_customer.id %></p>
+<p>氏名<%= current_customer.last_name %><%= current_customer.first_name %></p>
+<p>シメイ<%= current_customer.last_name_kana %><%= current_customer.first_name_kana %></p>
+<p>郵便番号<%= current_customer.postal_code %></p>
+<p>住所<%= current_customer.address %></p>
+<p>電話番号<%= current_customer.telephone_number %></p>
+<p>メールアドレス<%= current_customer.email %></p>
+<p>会員ステータス
+   <% if current_customer.is_deleted == false %>
+      <%= "有効" %>
+   <% else %>
+      <%= "退会" %>
+   <% end %>
+</p>
+<p>配送先<%= link_to "一覧",addresses_path,method: :get,class:"btn btn-sm btn-primary" %></p>

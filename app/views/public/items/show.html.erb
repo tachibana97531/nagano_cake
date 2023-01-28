@@ -2,3 +2,8 @@
 <%= @item_find.name %>
 <%= @item_find.introduction %>
 ￥<%= @item_find.add_price_tax.to_s(:delimited) %>(税込)
+<%= form_with model:@item_find,url:cart_items_path,method: :get do |f| %>
+  <%= f.hidden_field :item_id, value: @item_find.id %>
+  <%= f.select :amount,*[1..10] %>
+  <%= f.submit "カートへ入れる",class:"btn btn-sm btn-success" %>
+<% end %>

@@ -6,18 +6,22 @@
 <% end %>
 
 <table class="table">
-    <tr>
-        <th>郵便番号</th>
-        <th>住所</th>
-        <th>宛名</th>
-        <th></th>
-    </tr>
+    <thead>
+        <tr>
+            <th>郵便番号</th>
+            <th>住所</th>
+            <th>宛名</th>
+            <th></th>
+        </tr>
+    </thead>
     <% @address_all.each do |f| %>
-    <tr>
-        <td><%= f.customer_id.postal_code %></td>
-        <td><%= f.customer_id.address %></td>
-        <td><%= f.customer_id.name %></td>
-        <td><%= f.submit "編集",edit_address_path(f.id),method: :get,class:"btn btn-sm btn-success" %><%= f.submit "削除",address_path(f.id),method: :delete,class:"btn btn-sm btn-dangter" %></td>
-    </tr>
+    <tbody>
+        <tr>
+            <td><%= f.postal_code %></td>
+            <td><%= f.address %></td>
+            <td><%= f.name %></td>
+            <td><%= link_to "編集",edit_address_path(f.id),method: :get,class:"btn btn-sm btn-success" %><%= link_to "削除",address_path(f.id),method: :delete,"data-confirm"=>"本当に削除しますか？",class:"btn btn-sm btn-danger" %></td>
+        </tr>
+    </tbody>
     <% end %>
 </table>

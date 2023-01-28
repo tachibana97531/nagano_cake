@@ -1,2 +1,6 @@
-<h1>Public::Addresses#edit</h1>
-<p>Find me in app/views/public/addresses/edit.html.erb</p>
+<h1>配送先編集</h1>
+<%= form_with model:@address_find,url:address_path(@address_find.id),method: :patch do |f| %>
+  <p>郵便番号<%= f.text_field:postal_code,placeholder:"0000000" %></p>
+  <p>住所<%= f.text_field:address,placeholder:"東京都渋谷区代々木神園町0-0" %></p>
+  <p>宛名<%= f.text_field:name,placeholder:"令和道子" %></p><%= f.submit "変更内容を保存",class:"btn btn-sm btn-success" %>
+<% end %>

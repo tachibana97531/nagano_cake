@@ -48,7 +48,7 @@ Rails.application.routes.draw do
     resources:items,only:[:index,:show]
   end
   scope module:"public" do
-    get '/'=>"homes#top"
+    root to:"homes#top"
     get '/about'=>"homes#about"
   end
 

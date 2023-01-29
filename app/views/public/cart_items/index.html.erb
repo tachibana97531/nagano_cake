@@ -1,4 +1,5 @@
 <h1>ショッピングカート</h1>
+<%= link_to "カートを空にする", cart_items_destroy_all_path,method: :delete,class:"btn btn-sm btn-danger" %>
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -9,9 +10,16 @@
             <th></th>
         </tr>
     </thead>
-    <%= @cart_item_all.each do |f| %>
+    <% @cart_item_all.each do |f| %>
     <tbody>
-        
+        <tr>
+            <td><%= image_tag f.item.get_image(100,100) %><%= f.item.name %></td>
+            <td><%= f.item.add_price_tax.to_s(:delimited) %></td>
+            <td><%= f.amount %></td>
+            <td><%= f.item.add_price_tax.to_s(:delimited)*(f.amount) %></td>
+            <td><%= link_to "削除",cart_item_path(f.id),method: :delete,"data-confirm"=>"本当に削除しますか？",class:"btn btn-sm btn-danger" %></td>
+        </tr>
     </tbody>
     <% end %>
 </table>
+<%= link_to "買い物を続ける",root_path %><p>合計金額<%= @total.round.to_s(:delimited) %></p>

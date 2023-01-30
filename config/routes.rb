@@ -34,8 +34,9 @@ Rails.application.routes.draw do
     get 'orders/complete'=>"orders#complete"
   end
   scope module:"public" do
-    resources:cart_items,only:[:create,:index,:update,:destroy]
     delete 'cart_items/destroy_all'=>"cart_items#destroy_all"
+    resources:cart_items,only:[:create,:index,:update,:destroy]
+    
   end
   scope module:"public" do
     get 'customers/my_page'=>"customers#show"

@@ -10,7 +10,7 @@ class Item < ApplicationRecord
     end
     
     belongs_to :genre
-    has_many :cart_item,dependent: :destroy
+    has_many :cart_items,dependent: :destroy
     has_many :order_details,dependent: :destroy
     
     def add_price_tax

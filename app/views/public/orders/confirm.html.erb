@@ -1,1 +1,36 @@
 <h1>注文情報確認</h1>
+<table>
+    <thead>
+        <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+        </tr>
+    </thead>
+    <% @cart_items.each do |f| %>
+    <tbody>
+        <tr>
+            <td><%= image_tag f.item.get_image(100,100) %><%= f.item.name %></td>
+            <td><%= f.item.add_price_tax.to_s(:delimited) %></td>
+            <td><%= f.amount %></td>
+            <td><%= f.subtotal.to_s(:delimited) %></td>
+        </tr>
+    </tbody>
+    <% end %>
+</table>
+<table>
+    <tr>
+        <th>送料</th>
+        <td><%= @order.postage %></td>
+    </tr>
+    <tr>
+        <th>合計金額</th>
+        <td><%= @total.round.to_s(:delimited) %></td>
+    </tr>
+    <tr>
+        <th>請求金額</th>
+        <td><%= (@order.postage += @total).to_s(:delimited) %></td>
+    </tr>
+</table>
+<%= @order.name %>

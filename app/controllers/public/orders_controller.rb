@@ -4,20 +4,23 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    if "address_number" == "0"
+    @cart_items = CartItem.all
+    @total = @cart_items.inject(0) { |sum, cart_item| sum + cart_item.item.add_price_tax*(cart_item.amount) }
+    if params[:order][:address_number] == "0"
       @order = Order.new(order_params)
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
       @order.name = current_customer.last_name + current_customer.first_name
+    elsif params[:order][:address_number] == "1"
       @order = Order.new(order_params)
-    elsif "address_number" == "1"
       @address = Address.find(params[:order][:address_id])
       @order.postal_code = @address.postal_code
       @order.address = @address.address
       @order.name = @address.name
-    elsif "address_number" == "2"
+    elsif params[:order][:address_number] == "2"
       @order = Order.new(order_params)
     end
+    @order.postage = 800
   end
 
   def complete

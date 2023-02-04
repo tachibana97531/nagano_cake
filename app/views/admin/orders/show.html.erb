@@ -42,3 +42,7 @@
     <% end %>
 </table>
 
+<p>商品合計<%= ((@order.billing)-(@order.postage)).to_s(:delimited) %>円</p>
+<p>送料<%= @order.postage %>円</p>
+<p>商品合計<%= @order.billing.to_s(:delimited) %>円</p>
+

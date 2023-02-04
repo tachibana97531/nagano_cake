@@ -29,14 +29,13 @@ Rails.application.routes.draw do
     resources:addresses,except:[:new,:show]
   end
   scope module:"public" do
-    resources:orders,only:[:new,:create,:index,:show]
     post 'orders/confirm'=>"orders#confirm"
     get 'orders/complete'=>"orders#complete"
+    resources:orders,only:[:new,:create,:index,:show]
   end
   scope module:"public" do
     delete 'cart_items/destroy_all'=>"cart_items#destroy_all"
     resources:cart_items,only:[:create,:index,:update,:destroy]
-    
   end
   scope module:"public" do
     get 'customers/my_page'=>"customers#show"

@@ -1,2 +1,60 @@
-<h1>Public::Orders#show</h1>
-<p>Find me in app/views/public/orders/show.html.erb</p>
+<h1>注文履歴詳細</h1>
+<h5>注文情報</h5>
+<table>
+    <tr>
+        <th>注文日</th>
+        <td><%= @order_find.created_at.strftime("%Y/%m/%d") %></td>
+    </tr>
+    <tr>
+        <th>配送先</th>
+        <td>
+            〒<%= @order_find.postal_code %><br>
+            <%= @order_find.address %><br>
+            <%= @order_find.name %>
+        </td>
+    </tr>
+    <tr>
+        <th>支払方法</th>
+        <td><%= @order_find.pay_method_i18n %></td>
+    </tr>
+    <tr>
+        <th>ステータス</th>
+        <td></td>
+    </tr>
+</table>
+<h5>請求情報</h5>
+<table>
+    <tr>
+        <th>商品合計</th>
+        <td><%= ((@order_find.billing)-(@order_find.postage)).to_s(:delimited) %>円</td>
+    </tr>
+    <tr>
+        <th>配送料</th>
+        <td><%= @order_find.postage %>円</td>
+    </tr>
+    <tr>
+        <th>ご請求額</th>
+        <td><%= @order_find.billing.to_s(:delimited) %>円</td>
+    </tr>
+</table>
+<h5>注文内容</h5>
+<table>
+    <thead>
+        <tr>
+            <th>商品</th>
+            <th>単価(税込)</th>
+            <th>個数</th>
+            <th>小計</th>
+        </tr>
+    </thead>
+    <% @order_details.each do |f| %>
+    <tbody>
+        <tr>
+            <td><%= f.item.name %></td>
+            <td><%= f.price_tax.to_s(:delimited) %>円</td>
+            <td><%= f.amount %>個</td>
+            <td><%= ((f.price_tax)*(f.amount)).to_s(:delimited) %>円</td>
+        </tr>
+    </tbody>
+    <% end %>
+</table>

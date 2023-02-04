@@ -42,5 +42,6 @@
   <%= f.hidden_field :postage,value: 800 %>
   <%= f.hidden_field :billing,value: (800+@total) %>
   <%= f.hidden_field :pay_method,value:params[:order][:pay_method] %>
+  <%= f.hidden_field :status,value: "waiting" %>
   <%= f.submit "注文を確定する",class:"btn btn-sm btn-success" %>
 <% end %>

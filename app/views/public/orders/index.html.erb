@@ -23,7 +23,7 @@
               <td><%= items.item.name %></td>
             <% end %>
             <td><%= f.billing.to_s(:delimited) %>円</td>
-            <td></td>
+            <td><%= f.status_i18n %></td>
             <td><%= link_to "表示する",order_path(f.id),method: :get,class:"btn btn-sm btn-primary" %></td>
         </tr>
     </tbody>

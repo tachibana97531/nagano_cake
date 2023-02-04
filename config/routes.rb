@@ -7,11 +7,11 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
   namespace :admin do
-    patch 'order_details/:id'=>"order_details#update"
-  end
-  namespace :admin do
     get 'orders/:id'=>"orders#show"
     patch 'orders/:id'=>"orders#update"
+  end
+  namespace :admin do
+    patch 'order_details/:id'=>"order_details#update",as: :detail
   end
   namespace :admin do
     resources:customers,except:[:new,:create,:destroy]

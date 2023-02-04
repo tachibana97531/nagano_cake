@@ -36,6 +36,7 @@ class Public::OrdersController < ApplicationController
         @order_detail.order_id = @order.id
         @order_detail.amount = cart.amount
         @order_detail.price_tax = cart.item.add_price_tax
+        @order_detail.production_status = "wait"
         @order_detail.save
       end
       redirect_to orders_complete_path
@@ -59,6 +60,6 @@ class Public::OrdersController < ApplicationController
   private
   
   def order_params
-    params.permit(:postal_code,:address,:name,:pay_method,:postage,:billing)
+    params.permit(:postal_code,:address,:name,:pay_method,:postage,:billing,:status)
   end
 end

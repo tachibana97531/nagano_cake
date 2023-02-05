@@ -29,5 +29,14 @@ table {
     background-color:silver;
 }
 
+.about {
+    text-align:center;
+}
+
+.about p {
+    line-height:0px;
+    margin-top:0px;
+}
+
 
 

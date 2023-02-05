@@ -30,4 +30,5 @@ class Item < ApplicationRecord
         @item = Item.all
       end
     end
+
 end

@@ -32,9 +32,10 @@
             <td><%= f.amount %></td>
             <td><%= ((f.price_tax)*(f.amount)).to_s(:delimited) %>円</td>
             <td>
-                <%= form_with model:f,url:admin_detail_path(f.id),method: :patch,local:true do |product| %>
+                <%= form_with model:f,url:admin_detail_path(@order.id),method: :patch,local:true do |product| %>
                   <%= product.select :production_status,options_for_select([["着手不可","can_not_make"],["製作待ち","wait"],["製作中","producting"],["製作完了","finished"]],{selected: f.production_status}) %>
                   <%= product.submit "更新",class:"btn btn-sm btn-success" %>
+                  <%= product.hidden_field :order_id,value: f.id %>
                 <% end %>
             </td>
         </tr>

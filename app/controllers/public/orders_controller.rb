@@ -19,6 +19,9 @@ class Public::OrdersController < ApplicationController
       @order.name = @address.name
     elsif params[:order][:address_number] == "2"
       @order = Order.new(order_params)
+      @order.postal_code = params[:order][:postal_code]
+      @order.address = params[:order][:address]
+      @order.name = params[:order][:name]
     end
     @order.postage = 800
   end

@@ -26,6 +26,7 @@
                ようこそ、<%= current_customer.last_name %>さん！
              <% end %>
           </p>
+          <%= render partial:"layouts/search" %>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <% if request.fullpath.include? "/admin" %>

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   devise_for :admin,skip:[:registrations,:passwords],controllers:{
     sessions: "admin/sessions"
   }
+  get "search" => "searches#search"
   namespace :admin do
     get 'orders/:id'=>"orders#show"
     patch 'orders/:id'=>"orders#update"

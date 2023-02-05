@@ -33,7 +33,12 @@ table {
     text-align:center;
 }
 
+.about h1 {
+    font-size:70px;
+}
+
 .about p {
+    font-size:20px;
     line-height:0px;
     margin-top:0px;
 }

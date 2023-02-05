@@ -25,7 +25,7 @@ table {
        border:solid 1px black;
 }
 
-th {
+.my-page-table th {
     background-color:silver;
 }
 

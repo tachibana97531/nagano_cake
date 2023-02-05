@@ -22,6 +22,10 @@
           <button class="navbar-toggler" type="button" data-toggler="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" >
             <span class="navbar-toggler-icon"></span>
           </button>
+          <p><% if customer_signed_in? %>
+               ようこそ、<%= current_customer.last_name %>さん！
+             <% end %>
+          </p>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <% if request.fullpath.include? "/admin" %>
@@ -125,7 +129,7 @@
     <main>
       <%= yield %>
     </main>
-    <footer class="bg-light text-center text-lg-start fixed-bottom">
+    <footer class="bg-light text-center text-lg-start">
   <div class="container p-4">
     <div class="row">
       <div class="col-lg-3 col-md-6 mb-4 mb-md-0">

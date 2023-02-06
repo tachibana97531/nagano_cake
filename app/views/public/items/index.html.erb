@@ -1,8 +1,8 @@
 <%= render partial: "public/items/genre",locals: {genres:@genres} %>
 <% if params[:genre_id].present? %>
-  <h1>ジャンル一覧</h1>
+  <h1>ジャンル一覧(全<%= @items.count %>件)</h1>
 <% else %>
-  <h1>商品一覧</h1>
+  <h1>商品一覧(全<%= @items.count %>件)</h1>
 <% end %>
   
 <% @items.each do |f| %>

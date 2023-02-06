@@ -1,5 +1,11 @@
-<h1>商品一覧</h1>
-<% @item_all.each do |f| %>
+<%= render partial: "public/items/genre",locals: {genres:@genres} %>
+<% if params[:genre_id].present? %>
+  <h1>ジャンル一覧</h1>
+<% else %>
+  <h1>商品一覧</h1>
+<% end %>
+  
+<% @items.each do |f| %>
   <%= link_to item_path(f.id),method: :get do %>
     <%= image_tag f.get_image(100,100) %>
   <% end %>

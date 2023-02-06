@@ -1,6 +1,18 @@
-<%= render partial: "public/items/genre",locals: {genres:@genres} %>
-<p>ようこそ、ながのCAKEへ!</p><br>
-<p>このサイトは、ケーキ販売のECサイトになります。</p><br>
-<p>会員でない方も商品の閲覧はできますが、</p><br>
-<p>購入には会員登録が必要になります。</p>
-<%= image_tag "in_cake_shop.jpg",size: "100x100" %>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <%= render partial: "public/items/genre",locals: {genres:@genres} %>
+        </div>
+        <div class="col-md-9 top-block">
+            <div class="in-shop"><%= image_tag "in_cake_shop.jpg",size: "600x300" %></div>
+            <div class="top-comment-block">
+                <p>ようこそ、ながのCAKEへ!</p>
+                <p>このサイトは、ケーキ販売のECサイトになります。</p>
+                <p>会員でない方も商品の閲覧はできますが、</p>
+                <p>購入には会員登録が必要になります。</p>
+            </div>
+            <div>新着商品</div>
+        </div>
+        
+    </div>
+</div>

@@ -44,4 +44,15 @@ table {
 }
 
 
+.in-shop {
+    display:block;
+     position:relative;
+}
 
+.top-comment-block {
+    text-align:center;
+    position:absolute;
+    top:25%;
+    left:18%;
+    background:rgba(255,255,255,0.4);
+}

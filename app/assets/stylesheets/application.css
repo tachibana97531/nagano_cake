@@ -52,7 +52,15 @@ table {
 .top-comment-block {
     text-align:center;
     position:absolute;
-    top:25%;
-    left:18%;
+    top:16%;
+    left:16%;
     background:rgba(255,255,255,0.4);
+}
+
+.new-items {
+    display:inline-block;
+}
+
+.see-all-items {
+    text-align:right;
 }

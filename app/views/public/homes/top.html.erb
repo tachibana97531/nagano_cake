@@ -4,14 +4,28 @@
             <%= render partial: "public/items/genre",locals: {genres:@genres} %>
         </div>
         <div class="col-md-9 top-block">
-            <div class="in-shop"><%= image_tag "in_cake_shop.jpg",size: "600x300" %></div>
+            <div class="in-shop"><%= image_tag "in_cake_shop.jpg",size: "700x350" %></div>
             <div class="top-comment-block">
                 <p>ようこそ、ながのCAKEへ!</p>
                 <p>このサイトは、ケーキ販売のECサイトになります。</p>
                 <p>会員でない方も商品の閲覧はできますが、</p>
                 <p>購入には会員登録が必要になります。</p>
             </div>
-            <div>新着商品</div>
+            <div>
+                <h4>新着商品</h4>
+                <% @items.each do |item| %>
+                    <div class="new-items">
+                      <%= image_tag item.get_image(180,180) %><br>
+                      <%= item.name %><br>
+                      ￥<%= item.price.to_s(:delimited) %>
+                    </div>
+                <% end %>
+            </div>
+            <div class="see-all-items">
+                <%= link_to items_path,method: :get do %>
+                  <p>すべての商品を見る＞</p>
+                <% end %>
+            </div
         </div>
         
     </div>

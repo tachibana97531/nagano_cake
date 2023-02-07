@@ -1,14 +1,26 @@
-<%= render partial: "public/items/genre",locals: {genres:@genres} %>
-<% if params[:genre_id].present? %>
-  <h1>ジャンル一覧(全<%= @items.count %>件)</h1>
-<% else %>
-  <h1>商品一覧(全<%= @items.count %>件)</h1>
-<% end %>
-  
-<% @items.each do |f| %>
-  <%= link_to item_path(f.id),method: :get do %>
-    <%= image_tag f.get_image(100,100) %>
-  <% end %>
-  <%= f.name %>
-  ¥<%= f.add_price_tax.to_s(:delimited) %>
-<% end %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render partial: "public/items/genre",locals: {genres:@genres} %>
+    </div>
+    <div class="col-md-9">
+      <% if params[:genre_id].present? %>
+        <h1>ジャンル一覧(全<%= @items.count %>件)</h1>
+      <% else %>
+        <h1>商品一覧(全<%= @items.count %>件)</h1>
+      <% end %>
+      <div class="item-index">
+          <% @items.each do |f| %>
+            <div class="flex-item-box">
+              <%= link_to item_path(f.id),method: :get do %>
+                <%= image_tag f.get_image(150,200),class:"img" %>
+              <% end %>
+              <p><%= f.name %></p>
+              <p>¥<%= f.add_price_tax.to_s(:delimited) %></p>
+            </div>
+          <% end %>
+      </div>
+      <%= paginate @items %>
+    </div>  
+  </div>    
+</div>

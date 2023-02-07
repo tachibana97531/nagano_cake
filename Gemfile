@@ -62,3 +62,5 @@ gem 'enum_help'
 gem 'rails-i18n'
 
 gem 'image_processing', '~> 1.2'
+
+gem 'kaminari','~>1.2.1'

@@ -64,3 +64,19 @@ table {
 .see-all-items {
     text-align:right;
 }
+
+.item-index {
+    display:flex;
+    flex-wrap:wrap;
+}
+
+.flex-item-box {
+    width:25%;
+    height:25%;
+}
+
+.img {
+    width:150px;
+    height:150px;
+    object-fit:cover
+}

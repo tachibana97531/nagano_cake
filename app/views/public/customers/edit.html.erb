@@ -1,17 +1,25 @@
 <h4>会員情報編集</h4>
 <%= form_with model:current_customer,url:customers_information_path,method: :patch do |f| %>
-  <p>会員ID<%= current_customer.id %></p>
-  <p>氏名<%= f.text_field:last_name,placeholder:"令和" %><%= f.text_field:first_name,placeholder:"道子" %></p>
-  <p>シメイ<%= f.text_field:last_name_kana,placeholder:"レイワ" %><%= f.text_field:first_name_kana,placeholder:"ミチコ" %></p>
-  <p>郵便番号<%= f.text_field:postal_code,placeholder:"0000000" %></p>
-  <p>住所<%= f.text_field:address,placeholder:"東京都渋谷区代々木神園町0-0" %></p>
-  <p>電話番号<%= f.text_field:telephone_number,placeholder:"00000000000" %></p>
-  <p>メールアドレス<%= f.text_field:email,placeholer:"sample@example.com" %> %></p>
-  <p>会員ステータス
+<dl>
+  <dt>氏名</dt>
+  <dd><%= f.text_field:last_name,placeholder:"令和" %><%= f.text_field:first_name,placeholder:"道子" %></dd>
+  <dt>シメイ</dt>
+  <dd><%= f.text_field:last_name_kana,placeholder:"レイワ" %><%= f.text_field:first_name_kana,placeholder:"ミチコ" %></dd>
+  <dt>郵便番号</dt>
+  <dd><%= f.text_field:postal_code,placeholder:"0000000" %></dd>
+  <dt>住所</dt>
+  <dd><%= f.text_field:address,placeholder:"東京都渋谷区代々木神園町0-0" %></dd>
+  <dt>電話番号</dt>
+  <dd><%= f.text_field:telephone_number,placeholder:"00000000000" %></dd>
+  <dt>メールアドレス</dt>
+  <dd><%= f.text_field:email,placeholer:"sample@example.com" %></dd>
+  <dt>会員ステータス</dt>
+  <dd>
     <%= f.radio_button:is_deleted, :false %>
     <%= f.label:is_deleted, :"有効" %>
     <%= f.radio_button:is_deleted, :true %>
     <%= f.label:is_deleted, :"退会" %>
-  </p>
+  </dd>
+</dl>
   <p><%= f.submit "編集内容を保存",class:"btn btn-sm btn-success" %><%= link_to "退会する",customers_unsubscribe_path,class:"btn btn-sm btn-danger"%></p>
 <% end %>

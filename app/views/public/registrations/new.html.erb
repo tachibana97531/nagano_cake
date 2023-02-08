@@ -2,56 +2,56 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
-  
-  <div class="field">
-    <%= f.label :"名前" %>
-    <%= f.label :"(姓)" %>
-    <%= f.text_field :last_name,placeholder:"令和" %>
-    <%= f.label :"(名)" %>
-    <%= f.text_field :first_name,placeholder:"道子" %>
-  </div>
-  
-  <div>
-    <%= f.label :"フリガナ" %>
-    <%= f.label :"(セイ)" %>
-    <%= f.text_field :last_name_kana,placeholder:"レイワ" %>
-    <%= f.label :"(メイ)" %>
-    <%= f.text_field :first_name_kana,placeholder:"ミチコ" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :"メールアドレス" %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholer:"sample@example.com" %>
-  </div>
-  
-  <div>
-    <%= f.label :"郵便番号(ハイフンなし)" %>
-    <%= f.text_field :postal_code,placeholder:"0000000" %>
-  </div>
-  
-  <div>
-    <%= f.label :"住所" %>
-    <%= f.text_field :address,placeholder:"東京都渋谷区代々木神園町0-0" %>
-  </div>
-  
-  <div>
-    <%= f.label :"電話番号(ハイフンなし)" %>
-    <%= f.text_field :telephone_number,placeholder:"00000000000" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :"パスワード" %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %>文字以上)</em>
-    <% end %>
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :"パスワード(確認用)" %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
+  <dl>
+    
+      <div class="field">
+        <dt><%= f.label :"名前" %></dt>
+        <dd><%= f.label :"(姓)" %>&emsp;
+        <%= f.text_field :last_name,placeholder:"令和" %>
+        <%= f.label :"(名)" %>&emsp;
+        <%= f.text_field :first_name,placeholder:"道子" %></dd>
+      </div>
+      <div>
+        <dt><%= f.label :"フリガナ" %></dt>
+        <dd><%= f.label :"(セイ)" %>
+        <%= f.text_field :last_name_kana,placeholder:"レイワ" %>
+        <%= f.label :"(メイ)" %>
+        <%= f.text_field :first_name_kana,placeholder:"ミチコ" %></dd>
+      </div>
+    
+      <div>
+        <dt><%= f.label :"メールアドレス" %></dt>
+        <dd>&emsp;&emsp;&nbsp;&nbsp;&nbsp;<%= f.email_field :email, autofocus: true, autocomplete: "email",placeholer:"sample@example.com" %></dd>
+      </div>
+      
+      <div>
+        <dt><%= f.label :"郵便番号(ハイフンなし)" %></dt>
+        <dd>&emsp;&emsp;&nbsp;&nbsp;&nbsp;<%= f.text_field :postal_code,placeholder:"0000000" %></dd>
+      </div>
+      
+      <div>
+        <dt><%= f.label :"住所" %></dt>
+        <dd>&emsp;&emsp;&nbsp;&nbsp;&nbsp;<%= f.text_field :address,placeholder:"東京都渋谷区代々木神園町0-0",class:"form-juusho" %></dd>
+      </div>
+      
+      <div>
+        <dt><%= f.label :"電話番号(ハイフンなし)" %></dt>
+        <dd>&emsp;&emsp;&nbsp;&nbsp;&nbsp;<%= f.text_field :telephone_number,placeholder:"00000000000" %></dd>
+      </div>
+    
+      <div class="field">
+        <dt><%= f.label :"パスワード" %><% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %>文字以上)</em>
+        <% end %></dt>
+        <dd>
+        &emsp;&emsp;&nbsp;&nbsp;&nbsp;<%= f.password_field :password, autocomplete: "new-password" %></dd>
+      </div>
+    
+      <div class="field">
+        <dt><%= f.label :"パスワード(確認用)" %></dt>
+        <dd>&emsp;&emsp;&nbsp;&nbsp;&nbsp;<%= f.password_field :password_confirmation, autocomplete: "new-password" %></dd>
+      </div>
+  </dl>
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>

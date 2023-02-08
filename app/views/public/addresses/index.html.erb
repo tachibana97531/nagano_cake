@@ -1,8 +1,14 @@
 <h1>配送先登録/一覧</h1>
 <%= form_with model:@address,url:addresses_path,method: :post,local:true do |f| %>
-  <p>郵便番号(ハイフンなし)<%= f.text_field:postal_code,placeholder:"0000000" %></p>
-  <p>住所<%= f.text_field:address,placeholder:"東京都渋谷区代々木神園町0-0" %></p>
-  <p>宛名<%= f.text_field:name,placeholder:"令和道子" %><%= f.submit "新規登録",class:"btn btn-sm btn-success" %></p>
+  <dl>
+      <dt>郵便番号(ハイフンなし)</dt>
+      <dd><%= f.text_field:postal_code,placeholder:"0000000" %></dd>
+      <dt>住所</dt>
+      <dd><%= f.text_field:address,placeholder:"東京都渋谷区代々木神園町0-0",class:"form-juusho" %></dd>
+      <dt>宛名</dt>
+      <dd><%= f.text_field:name,placeholder:"令和道子" %>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+      <%= f.submit "新規登録",class:"btn btn-sm btn-success" %></dd>
+  </dl>
 <% end %>
 
 <table class="table">

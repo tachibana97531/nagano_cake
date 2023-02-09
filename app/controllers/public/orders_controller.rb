@@ -39,7 +39,7 @@ class Public::OrdersController < ApplicationController
         @order_detail.order_id = @order.id
         @order_detail.amount = cart.amount
         @order_detail.price_tax = cart.item.add_price_tax
-        @order_detail.production_status = "wait"
+        @order_detail.production_status = "can_not_make"
         @order_detail.save
       end
       redirect_to orders_complete_path
@@ -51,7 +51,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = current_customer.orders.all
   end
 
   def show

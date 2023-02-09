@@ -22,11 +22,14 @@
             <button class="navbar-toggler" type="button" data-toggler="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" >
               <span class="navbar-toggler-icon"></span>
             </button>
-            <p><% if customer_signed_in? %>
-                 ようこそ、<%= current_customer.last_name %>さん！
-               <% end %>
-            </p>
             <%= render partial:"layouts/search" %>
+            <p>
+              <% unless request.fullpath.include? "/admin" %>
+                <% if customer_signed_in? %>
+                 ようこそ、<%= current_customer.last_name %>さん！
+                <% end %>
+              <% end %>
+            </p>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav ml-auto">
                 <% if request.fullpath.include? "/admin" %>
@@ -42,7 +45,7 @@
                       <% end %>
                     </li>
                     <li>
-                      <%= link_to orders_path,method: :get,class: "nav-link text-dark border border-10 border-dark rounded m-2" do %>
+                      <%= link_to admin_homes_path,method: :get,class: "nav-link text-dark border border-10 border-dark rounded m-2" do %>
                         <span class="btn btn-sm">注文履歴一覧</span>
                       <% end %>
                     </li>

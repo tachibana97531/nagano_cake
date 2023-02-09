@@ -16,7 +16,7 @@
                 <% @items.each do |item| %>
                     <div class="new-items">
                       <%= link_to item_path(item.id),method: :get do %>
-                        <%= image_tag item.get_image(180,180) %>
+                        <%= image_tag item.get_image(180,180),class:"top-image" %>
                       <% end %><br>
                       <%= item.name %><br>
                       ￥<%= item.price.to_s(:delimited) %>
